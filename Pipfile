@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+streamlit = "==0.56.0"
+transformers = "==2.6.0"
+pandas = "==1.0.1"
+gunicorn = "==20.0.4"
+tweepy = "==3.8.0"
+beautifulsoup4 = "==4.8.2"
+Pillow = "==7.1.1"
+pynvim = "*"
+
+[requires]
+python_version = "3.8"
