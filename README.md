@@ -1,5 +1,7 @@
 # Machine Learning for Mortals
 
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+
 ![](./mortals.gif)
 
 ## What is it?
@@ -42,9 +44,10 @@ DATA: Sir, I wish to
 
 ## How Do I Use it?
 
-### Precaution
+### Precautions
 
-Machine learning needs a LOT of RAM. I highly recommend 16gb or more, or enabling a swap partition if you're on Linux. Otherwise your machine may just lock up during install or running the program (it happened to me plenty).
+* Machine learning needs a LOT of RAM. I highly recommend 16gb or more, or enabling a swap partition if you're on Linux. Otherwise your machine may just lock up during install or running the program (it happened to me plenty).
+* The process may take a while. The video above is highly edited. It really took about 3 minutes to generate that text on my laptop.
 
 ### Install
 
