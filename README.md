@@ -1,6 +1,6 @@
 # Machine Learning for Mortals
 
-![](./mortals.webm)
+![](./mortals.gif)
 
 ## What is it?
 
