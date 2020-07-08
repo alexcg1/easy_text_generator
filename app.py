@@ -24,25 +24,9 @@ def main():
         50,
         1000
     )
-    model_dict = {
-        "Star Trek scripts": "alexcg1/trekbot", 
-        "Movie scripts": "cpierse/gpt2_film_scripts",
-        "General text (GPT-2)": "gpt2-medium",
-        "General text (GPT)": "openai-gpt",
-        "IMDB review": "lvwerra/gpt2-imdb-pos",
-        "Cover letter": "jonasmue/cover-letter-gpt2",
-    }
 
     model_list = list(model_dict.keys())
 
-    # model_list = [
-        # "alexcg1/trekbot", 
-        # "cpierse/gpt2_film_scripts",
-        # "gpt2-medium",
-        # "openai-gpt",
-        # "lvwerra/gpt2-imdb-pos",
-        # "jonasmue/cover-letter-gpt2",
-    # ]
     model_selectbox = st.sidebar.selectbox("Model", model_list)
     model_select = model_dict[model_selectbox]
     context = st.sidebar.text_area("Starting text")

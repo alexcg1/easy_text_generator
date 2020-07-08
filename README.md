@@ -12,6 +12,22 @@ An app that runs in your web browser and uses a nice GUI interface to generate t
 
 ## Can I See some Examples?
 
+### General text (distilgpt2)
+
+Starting text: `There once was an ugly duckling`
+
+```
+There once was an ugly duckling in the woods. It didn't hurt. The little little
+yellow duckling was just so well dressed, and looked like so many of us. She
+didn't really know how it looked, or why it looked. Her face was completely
+lost, but now there is a lot more. I don't know what my mind was about this
+thing. But she just felt sad. And when I saw her that day the eyes were staring
+at her again. It was horrible. I saw it's ugly little duckling, or whatever it
+is, but it always looked ugly. And I just knew that once again, this was not
+something she liked to see. The little green duckling was just so well dressed.
+But it looked like that too. There was nothing I could do. I was just really
+```
+
 ### General text (GPT-2)
 
 Starting text: `It is a truth universally acknowledged`
