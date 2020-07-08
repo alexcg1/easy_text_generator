@@ -1,4 +1,6 @@
-# Machine Learning for Mortals
+# Easy Text Generator
+
+AI-powered text generation for mere mortals.
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
@@ -8,7 +10,7 @@
 
 An app that runs in your web browser and uses a nice GUI interface to generate text from pre-trained machine learning models like GPT-2. It doesn't support training models at the moment.
 
-## Can I See an Example?
+## Can I See some Examples?
 
 ### General text (GPT-2)
 
