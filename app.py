@@ -2,6 +2,7 @@ import streamlit as st
 from utils import load_model, generate, wrap_text
 import time
 import json
+from model_list import *
 
 # model, tokenizer = load_model()
 @st.cache(allow_output_mutation=True)
@@ -10,7 +11,7 @@ def loader(model_name):
 
 
 def main():
-    st.title("Machine Learning for Mortals")
+    st.title("Easy Text Generator")
     st.write("Use text generation models with just a few clicks")
     if "model_select" in locals():
         st.header(model_select)
