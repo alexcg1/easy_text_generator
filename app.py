@@ -22,9 +22,9 @@ max_length = st.sidebar.slider(
     """ Max Text Length 
     (Longer length, slower generation)""",
     50,
-    1000
+    1000,
+    value=100
 )
-
 
 model_selectbox = st.sidebar.selectbox("Model", model_names)
 
