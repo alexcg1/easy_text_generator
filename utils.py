@@ -14,7 +14,7 @@ with open("models.yml", "r") as stream:
 
 
 def load_model(model_dir=None):
-    """Loads the saved GPT2 model from disk if the directory exists.
+    """Loads the saved model from disk if the directory exists.
     Otherwise it will download the model and tokenizer from hugging face.  
     Returns 
     a tuple consisting of `(model,tokenizer)`
@@ -25,10 +25,11 @@ def load_model(model_dir=None):
     return model, tokenizer
 
 
-def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000):
-    print("Generate started")
+def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000, top_k=50, top_p=0.95):
+    print(f"Top_k: {top_k}")
+    print(f"Top_p: {top_p}")
+
     model.eval()
-    print("model eval mode")
     
     if input_text:
         input_ids = tokenizer.encode(input_text, return_tensors='pt')

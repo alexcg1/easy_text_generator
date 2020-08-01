@@ -1,10 +1,11 @@
 import streamlit as st
-from utils import load_model, generate, wrap_text, models
-# import time
+from utils import *
 import json
 
+line_wrap = False
+
 st.title("Easy Text Generator")
-st.write("Use text generation models with just a few clicks")
+st.write("Use language models with just a few clicks")
 
 model_names = []
 for model_dict in models:
@@ -24,6 +25,7 @@ max_length = st.sidebar.slider(
     1000
 )
 
+
 model_selectbox = st.sidebar.selectbox("Model", model_names)
 
 for item in models:
@@ -34,18 +36,33 @@ for item in models:
 model_select = model_data["path"]
 
 context = st.sidebar.text_area("Starting text")
+
+advanced = st.sidebar.checkbox("Advanced options", False, "advanced")
+
+if advanced:
+    top_k = st.sidebar.slider("Words to consider (top_k)", 1, 100, value=50)
+    top_p = st.sidebar.slider("Creativity (top_p)", 0.0, 1.0, value=0.95)
+    custom_model = st.sidebar.text_input(label="Model from transformers")
+    model_select = custom_model
+else:
+    top_k = 50
+    top_p = 0.95
+
 if st.sidebar.button("Generate"):
     model, tokenizer = load_model(model_dir=model_select)
 
     if context:
-        sample = generate(model,tokenizer,input_text=context,max_length=max_length)
+        sample = generate(model,tokenizer,input_text=context,max_length=max_length, top_k=top_k, top_p=top_p)
     else: 
-        sample = generate(model,tokenizer,max_length=max_length)
+        sample = generate(model,tokenizer,max_length=max_length, top_k=top_k, top_p=top_p)
     st.balloons()
 
 else:
     sample = ['']
 
 # Fix up line wrapping
-sample[0] = wrap_text(sample[0], length=80)
+if line_wrap == True:
+    sample[0] = wrap_text(sample[0], length=80)
+else:
+    sample[0] = sample[0]
 st.text(sample[0])
