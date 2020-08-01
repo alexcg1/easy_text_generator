@@ -43,7 +43,8 @@ if advanced:
     top_k = st.sidebar.slider("Words to consider (top_k)", 1, 100, value=50)
     top_p = st.sidebar.slider("Creativity (top_p)", 0.0, 1.0, value=0.95)
     custom_model = st.sidebar.text_input(label="Model from transformers")
-    model_select = custom_model
+    if custom_model != '':
+        model_select = custom_model
 else:
     top_k = 50
     top_p = 0.95
