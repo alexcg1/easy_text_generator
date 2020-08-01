@@ -8,7 +8,7 @@ Models:
   - Cover letter:
       path: "jonasmue/cover-letter-gpt2"
   - Recipe:
-      path: "mrm8488/gpt2-finetuned-recipes-cooking"
+      path: "mrm8488/gpt2-finetuned-recipes-cooking_v2"
   - "---":
       path: None
   - distilgpt2:
