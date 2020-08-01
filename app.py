@@ -1,62 +1,69 @@
 import streamlit as st
-from utils import load_model, generate, wrap_text
-import time
+from utils import *
 import json
-from model_list import *
 
-# model, tokenizer = load_model()
-@st.cache(allow_output_mutation=True)
-def loader(model_name):
-    return load_model(model_name)
+line_wrap = False
 
+st.title("Easy Text Generator")
+st.write("Use language models with just a few clicks")
 
-def main():
-    st.title("Easy Text Generator")
-    st.write("Use text generation models with just a few clicks")
-    if "model_select" in locals():
-        st.header(model_select)
+model_names = []
+for model_dict in models:
+    for key, value in model_dict.items():
+        model_names.append(key)
 
-    st.sidebar.title("Options")
-    # Setup sidebar
-    max_length = st.sidebar.slider(
-        """ Max Text Length 
-        (Longer length, slower generation)""",
-        50,
-        1000
-    )
+if "model_select" in locals():
+    st.header(model_select)
 
-    model_list = list(model_dict.keys())
+st.sidebar.title("Options")
 
-    model_selectbox = st.sidebar.selectbox("Model", model_list)
-    model_select = model_dict[model_selectbox]
-    context = st.sidebar.text_area("Starting text")
-    if st.sidebar.button("Generate"):
-        model, tokenizer = loader(model_select)
-        start_time = time.time()
-        if context:
-            sample = generate(model,tokenizer,input_text=context,max_length=max_length)
-        else: 
-            sample = generate(model,tokenizer,max_length=max_length)
-        # Show done with balloons
-        st.balloons()
-            
-        end_time = time.time()
+# Setup sidebar
+max_length = st.sidebar.slider(
+    """ Max Text Length 
+    (Longer length, slower generation)""",
+    50,
+    1000,
+    value=100
+)
 
-        print(end_time-start_time)
-    else:
-        sample = ['']
+model_selectbox = st.sidebar.selectbox("Model", model_names)
 
-    # Fix up line wrapping
-    # max_length = 80
-    # split_text = sample[0].split('\n')
-    # for line in split_text:
-        # if len(line) > max_length:
-            # import textwrap
-            # text_lines = textwrap.wrap(sample[0], width=80)
-            # sample[0] = '\n'.join(text_lines)
-            # break
+for item in models:
+    for key, value in item.items():
+        if key == model_selectbox:
+            model_data = value
+
+model_select = model_data["path"]
+
+context = st.sidebar.text_area("Starting text")
+
+advanced = st.sidebar.checkbox("Advanced options", False, "advanced")
+
+if advanced:
+    top_k = st.sidebar.slider("Words to consider (top_k)", 1, 100, value=50)
+    top_p = st.sidebar.slider("Creativity (top_p)", 0.0, 1.0, value=0.95)
+    custom_model = st.sidebar.text_input(label="Model from transformers")
+    if custom_model != '':
+        model_select = custom_model
+else:
+    top_k = 50
+    top_p = 0.95
+
+if st.sidebar.button("Generate"):
+    model, tokenizer = load_model(model_dir=model_select)
+
+    if context:
+        sample = generate(model,tokenizer,input_text=context,max_length=max_length, top_k=top_k, top_p=top_p)
+    else: 
+        sample = generate(model,tokenizer,max_length=max_length, top_k=top_k, top_p=top_p)
+    st.balloons()
+
+else:
+    sample = ['']
+
+# Fix up line wrapping
+if line_wrap == True:
     sample[0] = wrap_text(sample[0], length=80)
-    st.text(sample[0])
-    
-    
-main()
+else:
+    sample[0] = sample[0]
+st.text(sample[0])

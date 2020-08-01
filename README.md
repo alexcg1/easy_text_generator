@@ -10,6 +10,11 @@ AI-powered text generation for mere mortals.
 
 An app that runs in your web browser and uses a nice GUI interface to generate text from pre-trained machine learning models like GPT-2. It doesn't support training models at the moment.
 
+## Advanced options
+
+* `top_k` and `top_p` are explained well [here](https://github.com/VBPXKSMI/Open-CYOAI-Project/wiki/A-quick-explanation-on-what-is-top_k,-temp-and-top_p)
+* For `model from transformers`, just copy the `foo/bar` phrase from any model in https://huggingface.co/models. Not everything will work, but anything using GPT or text generation in general (i.e. not sentiment analysis, etc) should work okay.
+
 ## Can I See some Examples?
 
 ### General text (distilgpt2)
@@ -89,3 +94,4 @@ It opens a tab in your web browser where you can choose the model you want and g
 
 * [Script Buddy v2](https://github.com/cdpierse/script_buddy_v2) - code adapted from here
 * [Huggingface](https://huggingface.co/models) - a huge list of models for working with text
+* [Manu Romero](https://twitter.com/mrm8488) for help creating recipes language model

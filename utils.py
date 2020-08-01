@@ -1,40 +1,31 @@
-import transformers
-import torch
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from transformers import AutoTokenizer, AutoModelWithLMHead
 import random
-from transformers import AutoModel, AutoTokenizer, AutoModelWithLMHead
 import os
 import json
+import yaml
 
-# from transformers import AutoTokenizer, AutoModelWithLMHead
+models = []
 
-# tokenizer = AutoTokenizer.from_pretrained("alexcg1/trekbot")
-# model = AutoModelWithLMHead.from_pretrained("alexcg1/trekbot")
-
+with open("models.yml", "r") as stream:
+    out = yaml.load(stream)
+    model_list = out['Models']
+    for model in model_list:
+        models.append(model)
 
 
 def load_model(model_dir=None):
-    """Loads the saved GPT2 model from disk if the directory exists.
+    """Loads the saved model from disk if the directory exists.
     Otherwise it will download the model and tokenizer from hugging face.  
     Returns 
     a tuple consisting of `(model,tokenizer)`
     """    
 
-    # if model_dir is None:
-        # model_dir = 'models/'
-        # if not os.path.isdir(model_dir):
-            # tokenizer = AutoTokenizer.from_pretrained("alexcg1/trekbot")
-            # model = AutoModelWithLMHead.from_pretrained("alexcg1/trekbot")
-            # # tokenizer = AutoTokenizer.from_pretrained("cpierse/gpt2_film_scripts")
-            # # model = AutoModelWithLMHead.from_pretrained("cpierse/gpt2_film_scripts")
-            # return model, tokenizer
-
-    tokenizer = GPT2Tokenizer.from_pretrained(model_dir)
-    model = GPT2LMHeadModel.from_pretrained(model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    model = AutoModelWithLMHead.from_pretrained(model_dir)
     return model, tokenizer
 
 
-def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000):
+def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000, top_k=50, top_p=0.95):
     model.eval()
     
     if input_text:
@@ -57,7 +48,6 @@ def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000):
             num_return_sequences=num_samples
 
         )
-
 
     decoded_output = []
     for sample in output:

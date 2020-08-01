@@ -1,0 +1,19 @@
+Models:
+  - Star Trek:
+      path: "alexcg1/trekbot"
+  - Movie script:
+      path: "cpierse/gpt2_film_scripts"
+  - IMDB review:
+      path: "lvwerra/gpt2-imdb-pos"
+  - Cover letter:
+      path: "jonasmue/cover-letter-gpt2"
+  - Recipe:
+      path: "mrm8488/gpt2-finetuned-recipes-cooking_v2"
+  - "---":
+      path: None
+  - distilgpt2:
+      path: distilgpt2
+  - gpt2-medium:
+      path: gpt2-medium
+  - gpt:
+      path: openai-gpt
