@@ -26,9 +26,6 @@ def load_model(model_dir=None):
 
 
 def generate(model, tokenizer, input_text=None, num_samples=1, max_length=1000, top_k=50, top_p=0.95):
-    print(f"Top_k: {top_k}")
-    print(f"Top_p: {top_p}")
-
     model.eval()
     
     if input_text:
