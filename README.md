@@ -15,6 +15,37 @@ An app that runs in your web browser and uses a nice GUI interface to generate t
 * `top_k` and `top_p` are explained well [here](https://github.com/VBPXKSMI/Open-CYOAI-Project/wiki/A-quick-explanation-on-what-is-top_k,-temp-and-top_p)
 * For `model from transformers`, just copy the `foo/bar` phrase from any model in https://huggingface.co/models. Not everything will work, but anything using GPT or text generation in general (i.e. not sentiment analysis, etc) should work okay.
 
+## How Do I Use it?
+
+### Precautions
+
+* Machine learning needs a LOT of RAM. I highly recommend 16gb or more, or enabling a swap partition if you're on Linux. Otherwise your machine may just lock up during install or running the program (it happened to me plenty).
+* The process may take a while. The video above is highly edited. It really took about 3 minutes to generate that text on my laptop.
+
+### Install
+
+```bash
+git clone git@github.com:alexcg1/easy_text_generator
+cd easy_text_generator
+pip install -r requirements.txt
+```
+
+### Run
+
+In the same directory as above
+
+```bash
+streamlit app.py
+```
+
+It opens a tab in your web browser where you can choose the model you want and generate text.
+
+### Thanks to:
+
+* [Script Buddy v2](https://github.com/cdpierse/script_buddy_v2) - code adapted from here
+* [Huggingface](https://huggingface.co/models) - a huge list of models for working with text
+* [Manu Romero](https://twitter.com/mrm8488) for help creating recipes language model
+
 ## Can I See some Examples?
 
 ### General text (distilgpt2)
@@ -65,33 +96,3 @@ here, Mister Data.
 DATA: Sir, I wish to
 ```
 
-## How Do I Use it?
-
-### Precautions
-
-* Machine learning needs a LOT of RAM. I highly recommend 16gb or more, or enabling a swap partition if you're on Linux. Otherwise your machine may just lock up during install or running the program (it happened to me plenty).
-* The process may take a while. The video above is highly edited. It really took about 3 minutes to generate that text on my laptop.
-
-### Install
-
-```bash
-git clone git@github.com:alexcg1/easy_text_generator
-cd easy_text_generator
-pip install -r requirements.txt
-```
-
-### Run
-
-In the same directory as above
-
-```bash
-streamlit app.py
-```
-
-It opens a tab in your web browser where you can choose the model you want and generate text.
-
-### Thanks to:
-
-* [Script Buddy v2](https://github.com/cdpierse/script_buddy_v2) - code adapted from here
-* [Huggingface](https://huggingface.co/models) - a huge list of models for working with text
-* [Manu Romero](https://twitter.com/mrm8488) for help creating recipes language model
