@@ -75,8 +75,8 @@ DATA: Sir, I wish to
 ### Install
 
 ```bash
-git clone git@github.com:alexcg1/machine_learning_mortals.git
-cd machine_learning_mortals
+git clone git@github.com:alexcg1/easy_text_generator
+cd easy_text_generator
 pip install -r requirements.txt
 ```
 
