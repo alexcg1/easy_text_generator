@@ -64,7 +64,7 @@ sacremoses==0.0.43
 Send2Trash==1.5.0
 sentencepiece==0.1.91
 six==1.15.0
-streamlit==0.64.0
+streamlit==1.11.1
 terminado==0.8.3
 testpath==0.4.4
 tokenizers==0.8.1rc1
