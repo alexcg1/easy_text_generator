@@ -70,7 +70,7 @@ testpath==0.4.4
 tokenizers==0.8.1rc1
 toml==0.10.1
 toolz==0.10.0
-torch==1.5.1
+torch==1.7.1
 tornado==6.0.4
 tqdm==4.48.0
 traitlets==4.3.3
